@@ -53,6 +53,8 @@ public class SoundSettingsFragment extends PreferenceFragment
 
   private static final int MSG_UPDATE_RINGTONE_SUMMARY = 1;
 
+  public static final String SMART_MUTE_KEY = "smart_mute";
+
   private Preference ringtonePreference;
   private final Handler ringtoneLookupComplete =
       new Handler() {

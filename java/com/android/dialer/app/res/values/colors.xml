@@ -15,6 +15,9 @@
 -->
 
 <resources>
+  <color name="ic_fill_color">#FFFFFF</color>
+  <color name="ic_launcher_background">#FF1E90FF</color>
+
   <color name="voicemail_icon_disabled_tint">#80000000</color>
   <color name="voicemail_playpause_icon_tint">?colorIcon</color>
 

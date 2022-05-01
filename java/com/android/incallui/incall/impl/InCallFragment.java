@@ -144,6 +144,8 @@ public class InCallFragment extends Fragment
     }
   }
 
+  private View view;
+
   @Nullable
   @Override
   @SuppressLint("MissingPermission")

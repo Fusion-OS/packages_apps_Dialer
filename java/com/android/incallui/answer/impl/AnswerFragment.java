@@ -55,6 +55,10 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.graphics.Color;
+import android.view.WindowManager;
+import android.view.Window;
+import android.view.SurfaceControl;
 import com.android.dialer.common.Assert;
 import com.android.dialer.common.FragmentUtils;
 import com.android.dialer.common.LogUtil;
@@ -616,7 +620,7 @@ public class AnswerFragment extends Fragment
       if (!(current instanceof AvatarFragment)) {
         LogUtil.i("AnswerFragment.updateDataFragment", "Replacing avatar fragment");
         // Needs replacement
-        newFragment = new AvatarFragment();
+        //newFragment = new AvatarFragment();
       }
     } else {
       // Needs empty
@@ -721,6 +725,14 @@ public class AnswerFragment extends Fragment
     buttonRejectClicked = false;
 
     View view = inflater.inflate(R.layout.fragment_incoming_call, container, false);
+        Window window = getActivity().getWindow();
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+	window.setStatusBarColor(Color.TRANSPARENT);
+        window.setNavigationBarColor(Color.TRANSPARENT);
+        window.setNavigationBarContrastEnforced(false);
+        window.setDecorFitsSystemWindows(false);
+        window.getDecorView().setSystemUiVisibility(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        view.setFitsSystemWindows(false);
     secondaryButton = (SwipeButtonView) view.findViewById(R.id.incoming_secondary_button);
     answerAndReleaseButton = (SwipeButtonView) view.findViewById(R.id.incoming_secondary_button2);
 
@@ -746,7 +758,8 @@ public class AnswerFragment extends Fragment
             });
     updateImportanceBadgeVisibility();
 
-    contactGridManager = new ContactGridManager(view, null, 0, false /* showAnonymousAvatar */);
+    contactGridManager = new ContactGridManager(view, ((ImageView)view.findViewById(R.id.contactgrid_avatar2)), getResources().getDimensionPixelSize(R.dimen.incall_avatar_size), true /* showAnonymousAvatar */);
+    contactGridManager.setAvatarHidden(false);
     boolean isInMultiWindowMode = getActivity().isInMultiWindowMode();
     contactGridManager.onMultiWindowModeChanged(isInMultiWindowMode);
 
@@ -1187,7 +1200,17 @@ public class AnswerFragment extends Fragment
     @Override
     public View onCreateView(
         LayoutInflater layoutInflater, @Nullable ViewGroup viewGroup, @Nullable Bundle bundle) {
-      return layoutInflater.inflate(R.layout.fragment_avatar, viewGroup, false);
+      View v = layoutInflater.inflate(R.layout.fragment_avatar, viewGroup, false);
+        Window window = getActivity().getWindow();
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        window.setStatusBarColor(Color.TRANSPARENT);
+        window.setNavigationBarColor(Color.TRANSPARENT);
+        window.setNavigationBarContrastEnforced(false);
+        window.setDecorFitsSystemWindows(false);
+        window.getDecorView().setSystemUiVisibility(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+	v.setFitsSystemWindows(false);
+
+      return v;
     }
 
     @Override

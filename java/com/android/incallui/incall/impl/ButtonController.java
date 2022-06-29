@@ -678,7 +678,7 @@ interface ButtonController {
           InCallButtonIds.BUTTON_SWAP_SIM,
           R.string.incall_content_description_swap_sim,
           R.string.incall_label_swap_sim,
-          R.drawable.op_ic_sim_change_white);
+          R.drawable.ic_sim_change_white);
     }
 
     @Override

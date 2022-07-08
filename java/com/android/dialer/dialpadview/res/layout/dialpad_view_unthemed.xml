@@ -75,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/dialpad_overflow_margin"
-        android:paddingLeft="@dimen/dialpad_digits_menu_left_padding"
+        android:paddingLeft="@dimen/dialpad_digits_menu_right_padding"
         android:paddingRight="@dimen/dialpad_digits_menu_right_padding"
         android:background="@drawable/btn_dialpad_key"
         android:contentDescription="@string/description_dialpad_back"

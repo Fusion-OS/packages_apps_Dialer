@@ -30,9 +30,9 @@
 
     <ImageView
         android:id="@+id/bottom_nav_item_image"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="2dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="6dp"/>
 
     <TextView
@@ -60,6 +60,6 @@
       android:layout_height="wrap_content"
       android:layout_marginBottom="6dp"
       android:gravity="center_horizontal"
-      android:textSize="15sp"
+      android:textSize="14sp"
       style="@style/Dialer.TextAppearance.OVERLINE"/>
 </com.android.dialer.main.impl.bottomnav.BottomNavItem>

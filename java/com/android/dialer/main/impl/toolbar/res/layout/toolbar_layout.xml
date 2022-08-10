@@ -27,7 +27,7 @@
         android:id="@+id/search_view_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/search_bar_margin"
+        android:layout_marginVertical="8dp"
         android:layout_marginHorizontal="16dp"
         android:background="@drawable/search_bar_background_rounded_corners"
         android:minHeight="@dimen/collapsed_search_bar_height">

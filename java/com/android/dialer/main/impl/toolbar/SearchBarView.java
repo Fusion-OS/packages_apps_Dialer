@@ -187,11 +187,12 @@ final class SearchBarView extends FrameLayout {
    */
   private void setMargins(float fraction) {
     int margin = (int) (this.margin * fraction);
+    int sideMargin = (int) (this.margin * 2f);
     MarginLayoutParams params = (MarginLayoutParams) getLayoutParams();
     params.topMargin = margin;
     params.bottomMargin = margin;
-    params.leftMargin = margin;
-    params.rightMargin = margin;
+    params.leftMargin = sideMargin;
+    params.rightMargin = sideMargin;
     searchBoxExpanded.getLayoutParams().height =
         (int) (animationEndHeight - (animationEndHeight - animationStartHeight) * fraction);
   }

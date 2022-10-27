@@ -39,6 +39,8 @@ import android.animation.ValueAnimator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+
+import com.android.incallui.InCallActivity;
 import com.android.incallui.call.state.DialerCallState;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.Log;
@@ -189,6 +191,8 @@ public class InCallFragment extends Fragment
             () -> layoutInflater.inflate(R.layout.frag_incall_voice, viewGroup, false));
    this.view  = view;
     avatarImageView = (ImageView) view.findViewById(R.id.contactgrid_avatar);
+    InCallActivity activity = (InCallActivity) getActivity();
+    avatarImageView.setForeground(activity.getWindowBackgroundColor());
     contactGridManager =
         new ContactGridManager(
             view,

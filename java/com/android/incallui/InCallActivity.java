@@ -892,6 +892,13 @@ public class InCallActivity extends TransactionSafeFragmentActivity
             getResources().getString(R.string.notification_ongoing_call), null /* icon */, color));
   }
 
+  public GradientDrawable getWindowBackgroundColor() {
+    if (backgroundDrawable == null) {
+      updateWindowBackgroundColor(0);
+    }
+    return backgroundDrawable;
+  }
+
   public void updateWindowBackgroundColor(@FloatRange(from = -1f, to = 1.0f) float progress) {
     ThemeColorManager themeColorManager = InCallPresenter.getInstance().getThemeColorManager();
     @ColorInt int top;
@@ -919,7 +926,7 @@ public class InCallActivity extends TransactionSafeFragmentActivity
     boolean backgroundDirty = false;
     if (backgroundDrawable == null) {
       backgroundDrawableColors = new int[] {top, middle, bottom};
-      backgroundDrawable = new GradientDrawable(Orientation.TOP_BOTTOM, backgroundDrawableColors);
+      backgroundDrawable = new GradientDrawable(Orientation.TR_BL, backgroundDrawableColors);
       backgroundDirty = true;
     } else {
       if (backgroundDrawableColors[0] != top) {

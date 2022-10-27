@@ -36,4 +36,10 @@
       android:title="@string/display_options_view_names_as"
       android:defaultValue="@string/display_options_view_given_name_first_value"/>
 
+  <SwitchPreference
+      android:defaultValue="false"
+      android:key="disable_highlight_color"
+      android:title="@string/disable_highlight_color_title"
+      android:summary="@string/disable_highlight_color_summary" />
+
 </PreferenceScreen>

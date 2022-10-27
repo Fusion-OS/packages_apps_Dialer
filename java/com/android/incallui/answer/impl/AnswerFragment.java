@@ -68,6 +68,7 @@ import com.android.dialer.logging.Logger;
 import com.android.dialer.multimedia.MultimediaData;
 import com.android.dialer.telecom.TelecomUtil;
 import com.android.dialer.util.ViewUtil;
+import com.android.incallui.InCallActivity;
 import com.android.incallui.answer.impl.CreateCustomSmsDialogFragment.CreateCustomSmsHolder;
 import com.android.incallui.answer.impl.SmsBottomSheetFragment.SmsSheetHolder;
 import com.android.incallui.answer.impl.affordance.SwipeButtonHelper.Callback;
@@ -758,7 +759,10 @@ public class AnswerFragment extends Fragment
             });
     updateImportanceBadgeVisibility();
 
-    contactGridManager = new ContactGridManager(view, ((ImageView)view.findViewById(R.id.contactgrid_avatar2)), getResources().getDimensionPixelSize(R.dimen.incall_avatar_size), true /* showAnonymousAvatar */);
+    ImageView avatarImageView = (ImageView) view.findViewById(R.id.contactgrid_avatar2);
+    InCallActivity activity = (InCallActivity) getActivity();
+    avatarImageView.setForeground(activity.getWindowBackgroundColor());
+    contactGridManager = new ContactGridManager(view, avatarImageView, getResources().getDimensionPixelSize(R.dimen.incall_avatar_size), true /* showAnonymousAvatar */);
     contactGridManager.setAvatarHidden(false);
     boolean isInMultiWindowMode = getActivity().isInMultiWindowMode();
     contactGridManager.onMultiWindowModeChanged(isInMultiWindowMode);

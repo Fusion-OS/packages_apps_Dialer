@@ -27,7 +27,6 @@
 
     <ImageView
 	android:id="@+id/contactgrid_avatar2"
-        android:foreground="@drawable/gradientBg"
         android:src="@drawable/nopicbg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -17,7 +17,9 @@
 package com.android.incallui;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.v4.graphics.ColorUtils;
@@ -81,6 +83,17 @@ public class ThemeColorManager {
       backgroundColorMiddle = context.getColor(R.color.incall_background_gradient_middle);
       backgroundColorBottom = context.getColor(R.color.incall_background_gradient_bottom);
       backgroundColorSolid = context.getColor(R.color.incall_background_multiwindow);
+      SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+      final boolean isHightlightsDisabled = prefs.getBoolean("disable_highlight_color", false);
+
+      if (highlightColor != PhoneAccount.NO_HIGHLIGHT_COLOR && !isHightlightsDisabled) {
+        // The default background gradient has a subtle alpha. We grab that alpha and apply it to
+        // the phone account color.
+        backgroundColorTop = applyAlpha(palette.mPrimaryColor, backgroundColorTop);
+        backgroundColorMiddle = applyAlpha(palette.mPrimaryColor, backgroundColorMiddle);
+        backgroundColorBottom = applyAlpha(palette.mPrimaryColor, backgroundColorBottom);
+        backgroundColorSolid = applyAlpha(palette.mPrimaryColor, backgroundColorSolid);
+      }
     }
 
     primaryColor = palette.mPrimaryColor;
@@ -126,5 +139,10 @@ public class ThemeColorManager {
   @ColorInt
   public int getBackgroundColorSolid() {
     return backgroundColorSolid;
+  }
+
+  @ColorInt
+  private static int applyAlpha(@ColorInt int color, @ColorInt int sourceColorWithAlpha) {
+    return ColorUtils.setAlphaComponent(color, Color.alpha(sourceColorWithAlpha));
   }
 }

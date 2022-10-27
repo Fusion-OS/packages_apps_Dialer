@@ -120,7 +120,6 @@ final class SearchBarView extends FrameLayout {
     searchBoxExpanded.setVisibility(VISIBLE);
     AnimUtils.crossFadeViews(searchBoxExpanded, searchBoxCollapsed, duration);
     ValueAnimator animator = ValueAnimator.ofFloat(EXPAND_MARGIN_FRACTION_START, 0f);
-    animator.addUpdateListener(animation -> setMargins((Float) animation.getAnimatedValue()));
     animator.setDuration(duration);
     animator.addListener(
         new AnimatorListenerAdapter() {
@@ -142,7 +141,7 @@ final class SearchBarView extends FrameLayout {
             if (requestFocus) {
               searchBox.requestFocus();
             }
-            setBackgroundResource(R.drawable.search_bar_background);
+            setBackgroundResource(R.drawable.search_bar_background_rounded_corners);
           }
         });
     animator.start();
@@ -157,7 +156,6 @@ final class SearchBarView extends FrameLayout {
     int duration = animate ? ANIMATION_DURATION : 0;
     AnimUtils.crossFadeViews(searchBoxCollapsed, searchBoxExpanded, duration);
     ValueAnimator animator = ValueAnimator.ofFloat(0f, EXPAND_MARGIN_FRACTION_START);
-    animator.addUpdateListener(animation -> setMargins((Float) animation.getAnimatedValue()));
     animator.setDuration(duration);
 
     animator.addListener(

@@ -18,4 +18,6 @@
 <resources>
   <!-- Settings -->
   <color name="dialer_settings_theme_color_dark">#1C3AA9</color>
+  
+  <color name="dialer_call_green">@*android:color/system_accent1_400</color>
 </resources>
